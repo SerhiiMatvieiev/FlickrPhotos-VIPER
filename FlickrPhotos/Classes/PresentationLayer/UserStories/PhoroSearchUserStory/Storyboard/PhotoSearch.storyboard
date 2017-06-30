@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Photosearch View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="PhotoSearchViewController" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="PhotoSearchViewController" customModule="FlickrPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3uc-GG-Oen">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="brp-Rr-J2g">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                            <searchBar contentMode="redraw" placeholder="Search photo" translatesAutoresizingMaskIntoConstraints="NO" id="gf8-ad-Ujs">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3uc-GG-Oen" secondAttribute="bottom" id="LsC-5v-Hbv"/>
+                            <constraint firstItem="gf8-ad-Ujs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SjS-GB-dNd"/>
+                            <constraint firstItem="3uc-GG-Oen" firstAttribute="top" secondItem="gf8-ad-Ujs" secondAttribute="bottom" id="TnO-qy-dHC"/>
+                            <constraint firstItem="gf8-ad-Ujs" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="lVQ-7J-zCi"/>
+                            <constraint firstAttribute="trailing" secondItem="3uc-GG-Oen" secondAttribute="trailing" id="lfG-un-IMP"/>
+                            <constraint firstItem="3uc-GG-Oen" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nLF-HI-h20"/>
+                            <constraint firstAttribute="trailing" secondItem="gf8-ad-Ujs" secondAttribute="trailing" id="wuF-a1-9re"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photo Search" id="Vpa-7u-buI"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="collectionView" destination="3uc-GG-Oen" id="vcw-tW-zwm"/>
+                        <outlet property="searchBar" destination="gf8-ad-Ujs" id="dhj-ct-HNC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <customObject id="4Be-Ob-91r" customClass="PhotoSearchModuleInitializer" customModule="FlickrPhotos" customModuleProvider="target">
+                    <connections>
+                        <outlet property="photosearchViewController" destination="BYZ-38-t0r" id="afd-Z7-6ka"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="925.60000000000002" y="691.304347826087"/>
+        </scene>
+    </scenes>
+</document>

@@ -1,0 +1,35 @@
+### Headers settings
+company: GNS-IT
+
+### Xcode project settings
+project_name: FlickrPhotos
+xcodeproj_path: FlickrPhotos.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: FlickrPhotos
+
+# The file path for new modules
+project_file_path: FlickrPhotos/Classes/PresentationLayer/UserStories
+
+# The Xcode group path to new modules
+project_group_path: FlickrPhotos/Classes/PresentationLayer/UserStories
+
+### Tests generation settings section
+# The tests target name
+test_target: FlickrPhotosTests
+
+# The file path for new tests
+test_file_path: FlickrPhotos/FlickrPhotosTests
+
+# The Xcode group path to new tests
+test_group_path: FlickrPhotos/FlickrPhotosTests
+
+### Dependencies settings section
+podfile_path: Podfile
+
+### Templates
+templates:
+- {name: rviper_controller}
+- {name: mvvm_controller}
+- {name: swifty_viper}
