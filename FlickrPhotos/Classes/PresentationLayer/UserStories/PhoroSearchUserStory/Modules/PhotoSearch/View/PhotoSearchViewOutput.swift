@@ -14,4 +14,11 @@ protocol PhotoSearchViewOutput {
     */
 
     func viewIsReady()
+    
+    /**
+     @author Serhii Matvieiev
+     Obtain photos from FlickrAPI
+     */
+    
+    func obrainPhotos(withName: String)
 }

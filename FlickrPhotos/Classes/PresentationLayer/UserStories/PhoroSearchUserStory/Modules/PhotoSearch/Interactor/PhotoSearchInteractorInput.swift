@@ -10,5 +10,5 @@ import Foundation
 
 protocol PhotoSearchInteractorInput {
 
-    func fetchPhotos()
+    func fetchPhotos(withName: String)
 }

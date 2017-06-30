@@ -9,11 +9,11 @@
 class PhotoSearchInteractor: PhotoSearchInteractorInput {
 
     weak var output: PhotoSearchInteractorOutput!
-    
+        
     // Dummy data
     private let photos = [Photo(color: .red), Photo(color: .green), Photo(color: .blue)]
 
-    func fetchPhotos() {
+    func fetchPhotos(withName: String) {
         output.didFetchPhotos(photos: photos)
     }
 

@@ -20,6 +20,7 @@ class PhotoSearchViewController: UIViewController, PhotoSearchViewInput, PhotoSe
     override func viewDidLoad() {
         super.viewDidLoad()
         output.viewIsReady()
+        output.obrainPhotos(withName: "party")
     }
 
     // MARK: PhotoSearchViewInput

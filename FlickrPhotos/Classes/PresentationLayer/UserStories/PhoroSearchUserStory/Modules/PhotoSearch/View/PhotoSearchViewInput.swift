@@ -10,7 +10,7 @@ protocol PhotoSearchViewInput: class {
 
     /**
         @author Serhii Matvieiev
-        Setup initial state of the view
+        Setup collectionView with photos
     */
 
     func setupViewWithEventList(photos: [Photo])

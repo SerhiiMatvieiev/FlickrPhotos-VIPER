@@ -13,10 +13,14 @@ class PhotoSearchPresenter: PhotoSearchModuleInput, PhotoSearchViewOutput, Photo
     var router: PhotoSearchRouterInput!
 
     func viewIsReady() {
-        interactor.fetchPhotos()
+
     }
     
     func didFetchPhotos(photos: [Photo]) {
         view.setupViewWithEventList(photos: photos)
+    }
+    
+    func obrainPhotos(withName: String) {
+        interactor.fetchPhotos(withName: withName)
     }
 }
