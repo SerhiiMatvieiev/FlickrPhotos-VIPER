@@ -34,6 +34,7 @@ class PhotoSearchDataImplementation: NSObject, PhotoSearchDataDisplayManager {
     func updateCollectionView(withPhotos photos: [Photo]) {
         self.photos = photos
         print("updating collection view")
+        print("")
     }
     
     fileprivate var photos: [Photo]!
