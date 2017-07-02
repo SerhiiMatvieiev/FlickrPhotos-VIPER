@@ -7,11 +7,47 @@
 //
 
 protocol PhotoSearchViewInput: class {
+    
+    /**
+     @author Serhii Matvieiev
+     
+     Update collectionView with photos
+     */
+    func setupView()
 
     /**
-        @author Serhii Matvieiev
-        Setup collectionView with photos
+     @author Serhii Matvieiev
+     
+     Update collectionView with photos
     */
+    func updateView(withPhotos photos: [Photo], totalPages: Int)
+    
+    /**
+     @author Serhii Matvieiev
+     
+     Display error
+     */
+    func displayError(_ error: Error)
+    
+    /**
+     @author Serhii Matvieiev
+     
+     Show waiting view
+     */
+    func showWaitingView()
+    
+    /**
+     @author Serhii Matvieiev
+     
+     Hide waiting view
+     */
+    func hideWaitingView()
+    
+    /**
+     @author Serhii Matvieiev
+     
+     Photos count on view
+     */
+    var photosCount: Int { get }
 
-    func setupViewWithEventList(photos: [Photo])
 }

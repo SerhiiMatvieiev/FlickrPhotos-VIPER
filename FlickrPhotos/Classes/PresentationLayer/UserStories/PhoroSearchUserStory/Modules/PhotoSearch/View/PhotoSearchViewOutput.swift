@@ -9,16 +9,20 @@
 protocol PhotoSearchViewOutput {
 
     /**
-        @author Serhii Matvieiev
-        Notify presenter that view is ready
+     @author Serhii Matvieiev
+     
+     Notify presenter that view is ready
     */
-
     func viewIsReady()
     
     /**
      @author Serhii Matvieiev
+     
      Obtain photos from FlickrAPI
      */
+    func searchPhotos(withTag tag: String, page: Int)
+
     
-    func obrainPhotos(withName: String)
+    func didTriggerTapCell(withPhoto photo: Photo)
+
 }

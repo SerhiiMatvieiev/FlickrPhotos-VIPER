@@ -12,15 +12,34 @@ class PhotoSearchPresenter: PhotoSearchModuleInput, PhotoSearchViewOutput, Photo
     var interactor: PhotoSearchInteractorInput!
     var router: PhotoSearchRouterInput!
 
+    // MARK: - PhotoSearchViewOutput
+    
     func viewIsReady() {
+        view.setupView()
+    }
+    
+    func searchPhotos(withTag tag: String, page: Int) {
+        
+        if view.photosCount == 0 {
+            view.showWaitingView()
+        }
+        
+        interactor.searchPhotos(withTag: tag, page: page)
+    }
+    
+    func didTriggerTapCell(withPhoto photo: Photo) {
+        router.openPhotoSearchDetailModule(withPhoto: photo)
+    }
+    
+    // MARK: - PhotoSearchInteractorOutput
+    
+    func didSearchPhotos(photos: [Photo], totalPages: Int) {
+        view.hideWaitingView()
+        view.updateView(withPhotos: photos, totalPages: totalPages)
+    }
+    
+    func didOccurError(_ error: Error) {
+        view.displayError(error)
+    }
 
-    }
-    
-    func didFetchPhotos(photos: [Photo]) {
-        view.setupViewWithEventList(photos: photos)
-    }
-    
-    func obrainPhotos(withName: String) {
-        interactor.fetchPhotos(withName: withName)
-    }
 }

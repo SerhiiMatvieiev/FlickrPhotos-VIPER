@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import SDWebImage
 
 class PhotoSearchCell: UICollectionViewCell {
 
+    @IBOutlet weak var flickrImageView: UIImageView!
+    
     var photo: Photo? { didSet { updateUI() } }
     
     private func updateUI() {
-        backgroundColor = photo?.color
+        flickrImageView.sd_setImage(with: photo?.photoURL)
     }
 }

@@ -10,5 +10,21 @@ import Foundation
 
 protocol PhotoSearchInteractorOutput: class {
 
-    func didFetchPhotos(photos: [Photo])
+    /**
+     @author Serhii Matvieiev
+     
+     Method is used to inform presenter about new photos
+     
+     @param photos is array of Photo object
+     */
+    func didSearchPhotos(photos: [Photo], totalPages: Int)
+    
+    /**
+     @author Serhii Matvieiev
+     
+     Method is used to inform presenter that occure error
+     
+     @param error error
+     */
+    func didOccurError(_ error: Error)
 }

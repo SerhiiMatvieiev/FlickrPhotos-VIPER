@@ -10,4 +10,6 @@ import Foundation
 
 protocol PhotoSearchRouterInput {
 
+    func openPhotoSearchDetailModule(withPhoto: Photo)
+
 }

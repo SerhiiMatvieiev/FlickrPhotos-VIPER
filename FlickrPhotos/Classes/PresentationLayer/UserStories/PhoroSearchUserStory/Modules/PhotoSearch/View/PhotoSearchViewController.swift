@@ -17,30 +17,92 @@ class PhotoSearchViewController: UIViewController, PhotoSearchViewInput, PhotoSe
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         output.viewIsReady()
-        output.obrainPhotos(withName: "party")
     }
 
     // MARK: PhotoSearchViewInput
-    func setupViewWithEventList(photos: [Photo]) {
-        setupInitialState()
+    
+    func setupView() {
+        searchBar.delegate = self
         
         collectionView.dataSource = dataDisplayManager.dataSource(for: collectionView)
         collectionView.delegate = dataDisplayManager.delegate(for: collectionView, withBaseDelegate: self)
-
-        // update collectionView
-        dataDisplayManager.updateCollectionView(withPhotos: photos)
     }
     
-    private func setupInitialState() {
-        print("setup initial state")
+    func updateView(withPhotos photos: [Photo], totalPages: Int) {
+        setupInitialState()
+        
+        // update collectionView
+        dataDisplayManager.updateCollectionView(withPhotos: photos, totalPages: totalPages)
+    }
+    
+    func displayError(_ error: Error) {
+        let alertController = UIAlertController(title: Alert.errorTitle, message: error.localizedDescription, preferredStyle: .alert)
+        let action = UIAlertAction(title: Alert.OK, style: .default, handler: nil)
+        alertController.addAction(action)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func showWaitingView() {
+        let alertController = UIAlertController(title: nil, message: Alert.waintingMessage, preferredStyle: .alert)
+        
+        alertController.view.tintColor = .black
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.activityIndicatorViewStyle = .gray
+        loadingIndicator.startAnimating()
+        
+        alertController.view.addSubview(loadingIndicator)
+        
+        navigationController?.present(alertController, animated: true, completion: nil)
+    }
+    
+    func hideWaitingView() {
+        navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    var photosCount: Int {
+        return dataDisplayManager.photoCount
     }
     
     // MARK: - PhotoSearchDataDisplayManagerDelegate
     
     func didTapCell(withPhoto photo: Photo) {
-        print(photo.color.debugDescription)
+        output.didTriggerTapCell(withPhoto: photo)
+    }
+    
+    func searchPhotos(inPage page: Int) {
+        output.searchPhotos(withTag: searchText!, page: page)
+    }
+    
+    // MARK: - Private methods
+    
+    private func setupInitialState() {
+        
+    }
+    
+    fileprivate var searchText: String? {
+        didSet {
+            searchPhotos(inPage: 1)
+        }
+    }
+
+}
+
+// MARK: - UISearchBarDelegate
+
+extension PhotoSearchViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        
+        // Clear old photos
+        dataDisplayManager.claerView()
+        
+        guard let searchText = searchBar.text else { return }
+        self.searchText = searchText
     }
 }

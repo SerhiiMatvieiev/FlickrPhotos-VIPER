@@ -20,7 +20,8 @@ class PhotoSearchModuleConfigurator {
     private func configure(viewController: PhotoSearchViewController) {
 
         let router = PhotoSearchRouter()
-
+        router.transitionHandler = viewController
+        
         let presenter = PhotoSearchPresenter()
         presenter.view = viewController
         presenter.router = router
@@ -28,11 +29,14 @@ class PhotoSearchModuleConfigurator {
         let interactor = PhotoSearchInteractor()
         interactor.output = presenter
 
-        presenter.interactor = interactor
-        viewController.output = presenter
-
         let dataDisplayManager = PhotoSearchDataImplementation()
         viewController.dataDisplayManager = dataDisplayManager
+        
+        let flickrPhotoService = FlickrPhotoServiceImplementation()
+        interactor.flickrPhotoService = flickrPhotoService
+        
+        presenter.interactor = interactor
+        viewController.output = presenter
     }
 
 }

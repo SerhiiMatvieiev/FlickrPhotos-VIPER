@@ -9,12 +9,21 @@
 class PhotoSearchInteractor: PhotoSearchInteractorInput {
 
     weak var output: PhotoSearchInteractorOutput!
-        
-    // Dummy data
-    private let photos = [Photo(color: .red), Photo(color: .green), Photo(color: .blue)]
-
-    func fetchPhotos(withName: String) {
-        output.didFetchPhotos(photos: photos)
+    
+    var flickrPhotoService: FlickrPhotoService!
+    
+    func searchPhotos(withTag tag: String, page: Int) {
+        flickrPhotoService.searchPhotos(withTag: tag, page: page) { [weak self] (photos, totalPages, error) in
+            
+            guard let strongSelf = self else { return }
+            
+            if let error = error {
+                strongSelf.output.didOccurError(error)
+                return
+            }
+            
+            strongSelf.output.didSearchPhotos(photos: photos, totalPages: totalPages)
+        }
     }
 
 }

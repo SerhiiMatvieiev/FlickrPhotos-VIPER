@@ -10,5 +10,14 @@ import Foundation
 
 protocol PhotoSearchInteractorInput {
 
-    func fetchPhotos(withName: String)
+    /**
+     @author Serhii Matvieiev
+     
+     Method is used to search photos in Flickr
+     
+     @param tag is photo tag
+     
+     @param page it is page number
+     */
+    func searchPhotos(withTag tag: String,  page: Int)
 }

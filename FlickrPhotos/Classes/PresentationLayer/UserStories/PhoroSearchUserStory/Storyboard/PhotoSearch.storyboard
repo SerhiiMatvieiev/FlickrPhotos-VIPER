@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -53,6 +53,7 @@
                     <connections>
                         <outlet property="collectionView" destination="3uc-GG-Oen" id="vcw-tW-zwm"/>
                         <outlet property="searchBar" destination="gf8-ad-Ujs" id="dhj-ct-HNC"/>
+                        <segue destination="3L0-Fp-B0a" kind="show" identifier="ShowPhotoDetail" id="Bf3-2M-33K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -63,6 +64,14 @@
                 </customObject>
             </objects>
             <point key="canvasLocation" x="925.60000000000002" y="691.304347826087"/>
+        </scene>
+        <!--PhotoSearchDetail-->
+        <scene sceneID="dPc-v8-vyR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PhotoSearchDetail" id="3L0-Fp-B0a" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="735-E5-edG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1666" y="691"/>
         </scene>
     </scenes>
 </document>

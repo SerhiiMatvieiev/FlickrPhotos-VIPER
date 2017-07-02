@@ -9,12 +9,26 @@
 import UIKit
 
 protocol PhotoSearchDataDisplayManager: DataDisplayManager {
+        
+    /**
+     @author Serhii Matvieiew
+     
+     Update collectionView.
+     */
+    func updateCollectionView(withPhotos: [Photo], totalPages: Int)
     
     /**
-     *  @author Serhii Matvieiew
-     *
-     *  Update collectionView.
+     @author Serhii Matvieiew
+     
+     Clear collectionView.
      */
-    func updateCollectionView(withPhotos: [Photo])
+    func claerView()
 
+    /**
+     @author Serhii Matvieiew
+     
+     Count of photo
+     */
+    var photoCount: Int { get }
+    
 }

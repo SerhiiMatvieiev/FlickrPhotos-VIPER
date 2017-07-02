@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoSearchLoadingCell" id="gTV-IL-0wX" customClass="PhotoSearchLoadingCell" customModule="FlickrPhotos" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PhotoLoadingCell" customModule="FlickrPhotos" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="a4K-mX-PKM">
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="yfH-ax-MiM">
                         <rect key="frame" x="15" y="15" width="20" height="20"/>
                     </activityIndicatorView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="a4K-mX-PKM" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="92y-Bs-tXH"/>
-                <constraint firstItem="a4K-mX-PKM" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="pfD-d6-Rsj"/>
+                <constraint firstItem="yfH-ax-MiM" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="OGY-P7-Srp"/>
+                <constraint firstItem="yfH-ax-MiM" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="XDh-Na-OHl"/>
             </constraints>
         </collectionViewCell>
     </objects>

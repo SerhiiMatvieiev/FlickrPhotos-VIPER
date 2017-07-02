@@ -6,6 +6,18 @@
 //  Copyright © 2017 GNS-IT. All rights reserved.
 //
 
-class PhotoSearchRouter: PhotoSearchRouterInput {
+import LightRoute
 
+let showPhotoDetail = "ShowPhotoDetail"
+
+class PhotoSearchRouter: PhotoSearchRouterInput {
+    
+    weak var transitionHandler: TransitionHandler!
+    
+    func openPhotoSearchDetailModule(withPhoto photo: Photo) {
+        transitionHandler.forSegue(identifier: showPhotoDetail,
+                                   to: PhotoSearchDetailModuleInput.self) { (moduleInput) in
+            moduleInput.configureCurrentModule(withPhoto: photo)
+        }
+    }
 }

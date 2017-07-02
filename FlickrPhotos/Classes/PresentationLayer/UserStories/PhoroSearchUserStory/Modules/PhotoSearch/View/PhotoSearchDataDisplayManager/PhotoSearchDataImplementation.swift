@@ -10,8 +10,24 @@ import UIKit
 
 protocol PhotoSearchDataDisplayManagerDelegate: class {
 
+    /**
+     @author Serhii Marvieiev
+     
+     Notify when cell pressed
+     */
     func didTapCell(withPhoto photo: Photo)
-
+    
+    /**
+     @author Serhii Marvieiev
+     
+     Search photos in page
+     
+     @param tag is photo name
+     
+     @param page is page number
+     */
+    func searchPhotos(inPage page: Int)
+    
 }
 
 class PhotoSearchDataImplementation: NSObject, PhotoSearchDataDisplayManager {
@@ -22,7 +38,8 @@ class PhotoSearchDataImplementation: NSObject, PhotoSearchDataDisplayManager {
     
     func dataSource(for collectionView: UICollectionView) -> UICollectionViewDataSource {
         collectionView.registerCellNib(PhotoSearchCell.self)
-        collectionView.registerCellNib(PhotoSearchLoadingCell.self)
+        collectionView.registerCellNib(PhotoLoadingCell.self)
+        self.collectionView = collectionView
         return self
     }
 
@@ -31,32 +48,65 @@ class PhotoSearchDataImplementation: NSObject, PhotoSearchDataDisplayManager {
         return self
     }
 
-    func updateCollectionView(withPhotos photos: [Photo]) {
-        self.photos = photos
-        print("updating collection view")
-        print("")
+    func updateCollectionView(withPhotos photos: [Photo], totalPages: Int) {
+        self.photos.append(contentsOf: photos)
+        self.totalPages = totalPages
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
     }
     
-    fileprivate var photos: [Photo]!
+    func claerView() {
+        photos.removeAll()
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+        }
+    }
+    
+    var photoCount: Int {
+        return photos.count
+    }
+    
+    // MARK: - Private implementations
+    
+    private var collectionView: UICollectionView!
+    
+    fileprivate var currentPage = 1
+    fileprivate var totalPages = 1
+    fileprivate var photos: [Photo] = []
 }
 
 // MARK: - UICollectionViewDataSource
 
 extension PhotoSearchDataImplementation: UICollectionViewDataSource {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        
+        return currentPage < totalPages ? photos.count + 1 : photos.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        if indexPath.item < photos.count {
+            return photoCell(collectionView, cellForItemAt: indexPath)
+        } else {
+            currentPage += 1
+            delegate?.searchPhotos(inPage: currentPage)
+            return loadingCell(collectionView, cellForItemAt: indexPath)
+        }
+    }
+    
+    func photoCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoSearchCell.reuseIdentifier, for: indexPath) as! PhotoSearchCell
         
         cell.photo = photos[indexPath.item]
+        
+        return cell
+    }
+    
+    func loadingCell(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoLoadingCell.reuseIdentifier, for: indexPath) as! PhotoLoadingCell
+        
         
         return cell
     }
@@ -71,5 +121,28 @@ extension PhotoSearchDataImplementation: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? PhotoSearchCell,
             let photo = cell.photo else { return }
         delegate.didTapCell(withPhoto: photo)
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension PhotoSearchDataImplementation: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if indexPath.item < photos.count {
+            let size = collectionView.bounds.width / 3 - 2
+            return CGSize(width: size, height: size)
+        } else {
+            return CGSize(width: collectionView.bounds.width, height: 100)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1.0
     }
 }
