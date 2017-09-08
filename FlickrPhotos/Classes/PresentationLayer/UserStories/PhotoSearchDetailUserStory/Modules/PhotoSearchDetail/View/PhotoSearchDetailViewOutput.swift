@@ -9,9 +9,7 @@
 protocol PhotoSearchDetailViewOutput {
 
     /**
-        @author Serhii Matvieiev
-        Notify presenter that view is ready
+     Notify presenter that view is ready
     */
-
     func viewIsReady()
 }

@@ -9,10 +9,7 @@
 import UIKit
 
 protocol ReusableView: class {
-    /**
-     @author Serhii Matvieiev
-     Return cell identifier
-     */
+
     static var reuseIdentifier: String { get }
 }
 

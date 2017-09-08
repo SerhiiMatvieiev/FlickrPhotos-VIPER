@@ -2,7 +2,7 @@
 //  PhotoSearchPhotoSearchViewController.swift
 //  FlickrPhotos
 //
-//  Created by cd /Users/mac/Desktop/FlickrPhotos/ on 30/06/2017.
+//  Created by cd Sergey Matveev on 30/06/2017.
 //  Copyright © 2017 GNS-IT. All rights reserved.
 //
 
@@ -33,7 +33,6 @@ class PhotoSearchViewController: UIViewController, PhotoSearchViewInput, PhotoSe
     }
     
     func updateView(withPhotos photos: [Photo], totalPages: Int) {
-        setupInitialState()
         
         // update collectionView
         dataDisplayManager.updateCollectionView(withPhotos: photos, totalPages: totalPages)
@@ -80,13 +79,9 @@ class PhotoSearchViewController: UIViewController, PhotoSearchViewInput, PhotoSe
     
     // MARK: - Private methods
     
-    private func setupInitialState() {
-        
-    }
-    
     fileprivate var searchText: String? {
         didSet {
-            searchPhotos(inPage: 1)
+            searchPhotos(inPage: 1) // default page is 1
         }
     }
 

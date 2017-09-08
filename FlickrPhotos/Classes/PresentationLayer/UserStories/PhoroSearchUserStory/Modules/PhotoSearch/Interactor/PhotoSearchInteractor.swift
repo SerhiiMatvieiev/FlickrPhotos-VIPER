@@ -2,7 +2,7 @@
 //  PhotoSearchPhotoSearchInteractor.swift
 //  FlickrPhotos
 //
-//  Created by cd /Users/mac/Desktop/FlickrPhotos/ on 30/06/2017.
+//  Created by cd Sergey Matveev on 30/06/2017.
 //  Copyright © 2017 GNS-IT. All rights reserved.
 //
 
@@ -13,16 +13,14 @@ class PhotoSearchInteractor: PhotoSearchInteractorInput {
     var flickrPhotoService: FlickrPhotoService!
     
     func searchPhotos(withTag tag: String, page: Int) {
-        flickrPhotoService.searchPhotos(withTag: tag, page: page) { [weak self] (photos, totalPages, error) in
-            
-            guard let strongSelf = self else { return }
+        flickrPhotoService.searchPhotos(withTag: tag, page: page) { (photos, totalPages, error) in
             
             if let error = error {
-                strongSelf.output.didOccurError(error)
+                self.output.didOccurError(error)
                 return
             }
             
-            strongSelf.output.didSearchPhotos(photos: photos, totalPages: totalPages)
+            self.output.didSearchPhotos(photos: photos, totalPages: totalPages)
         }
     }
 

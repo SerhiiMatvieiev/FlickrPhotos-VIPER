@@ -6,7 +6,7 @@
 //  Copyright © 2017 GNS-IT. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class PhotoSearchDetailPresenter: NSObject, PhotoSearchDetailModuleInput, PhotoSearchDetailViewOutput, PhotoSearchDetailInteractorOutput {
 
@@ -17,12 +17,26 @@ class PhotoSearchDetailPresenter: NSObject, PhotoSearchDetailModuleInput, PhotoS
     var photo: Photo?
     
     func viewIsReady() {
-        print("view is ready")
+        if let url = photo!.largePhotoURL {
+            interactor.loadImage(withURL: url)
+        } else {
+            // TODO: Show error
+        }
     }
     
     // MARK: - PhotoSearchDetailModuleInput
     
     func configureCurrentModule(withPhoto photo: Photo) {
         self.photo = photo
+    }
+    
+    // MARK: - PhotoSearchDetailInteractorOutput
+
+    func didLoadImage(_ image: UIImage) {
+        view.showImage(image)
+    }
+    
+    func didOccurError(_ error: Error) {
+        
     }
 }

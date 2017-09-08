@@ -10,9 +10,7 @@ typealias FlickrPhotosCompletion = ([Photo], Int, Error?) -> ()
 
 protocol FlickrPhotoService {
     
-    /**
-     @author Serhii Matvieiev
-     
+    /**     
      Method is used to find a Flickr photos by sending request to server
      
      @param tag is photo tag

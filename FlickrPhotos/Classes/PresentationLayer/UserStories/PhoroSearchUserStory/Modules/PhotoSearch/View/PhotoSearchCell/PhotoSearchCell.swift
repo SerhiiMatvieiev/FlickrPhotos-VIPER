@@ -15,6 +15,8 @@ class PhotoSearchCell: UICollectionViewCell {
     
     var photo: Photo? { didSet { updateUI() } }
     
+    // MARK: - Private implementations
+    
     private func updateUI() {
         flickrImageView.sd_setImage(with: photo?.photoURL)
     }

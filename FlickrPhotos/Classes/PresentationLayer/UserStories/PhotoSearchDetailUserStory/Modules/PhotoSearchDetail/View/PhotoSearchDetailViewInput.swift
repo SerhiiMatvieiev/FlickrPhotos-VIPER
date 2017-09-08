@@ -6,12 +6,17 @@
 //  Copyright © 2017 GNS-IT. All rights reserved.
 //
 
+import UIKit
+
 protocol PhotoSearchDetailViewInput: class {
 
     /**
-        @author Serhii Matvieiev
-        Setup initial state of the view
+     Setup initial state of the view
     */
-
     func setupInitialState()
+    
+    /**     
+     Show loaded image
+     */
+    func showImage(_ image: UIImage)
 }

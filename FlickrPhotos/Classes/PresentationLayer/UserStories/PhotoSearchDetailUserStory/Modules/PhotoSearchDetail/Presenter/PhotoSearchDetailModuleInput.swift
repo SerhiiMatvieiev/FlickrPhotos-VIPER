@@ -8,9 +8,7 @@
 
 protocol PhotoSearchDetailModuleInput: class {
 
-    /**
-     @author Serhii Matvieiev
-     
+    /**     
      Method is used to cunfigure photo search detail module
      
      @param photo Photo object

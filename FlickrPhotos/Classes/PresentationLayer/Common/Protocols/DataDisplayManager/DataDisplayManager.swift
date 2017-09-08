@@ -11,8 +11,6 @@ import UIKit
 protocol DataDisplayManager {
     
     /**
-     @author Serhii Mstvieiev
-     
      Method return dataSource for collectionView.
      
      @param Controller collectionView.
@@ -22,12 +20,10 @@ protocol DataDisplayManager {
     func dataSource(for collectionView: UICollectionView) -> UICollectionViewDataSource
     
     /**
-     @author Serhii Mstvieiev
-     
-     Method return dataSource for collectionView.
+     Method returns dataSource for collectionView.
      
      @param Controller collectionView.
-     @param delegate Main collection view delegate (foe example, UIViewController) - needs for forwarding some collectionView methods
+     @param delegate Main collection view delegate (for example, UIViewController) - needs for forwarding some collectionView methods
      
      @return (UICollectionViewDelegate)
      */

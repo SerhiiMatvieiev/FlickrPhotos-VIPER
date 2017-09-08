@@ -28,6 +28,9 @@ class PhotoSearchDetailModuleConfigurator {
         let interactor = PhotoSearchDetailInteractor()
         interactor.output = presenter
 
+        let imageLoaderService = ImageLoaderServiceImplementaion()
+        interactor.imageLoaderService = imageLoaderService
+        
         presenter.interactor = interactor
         viewController.output = presenter
     }

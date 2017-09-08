@@ -10,4 +10,10 @@ import Foundation
 
 protocol PhotoSearchDetailInteractorInput {
 
+    /**     
+     Method is used to load image by sending request to server
+     
+     @param url Image url
+     */
+    func loadImage(withURL url: URL)
 }

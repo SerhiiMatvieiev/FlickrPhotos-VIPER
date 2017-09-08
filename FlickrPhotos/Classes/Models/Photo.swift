@@ -37,7 +37,7 @@ class Photo: Mappable {
     
     // MARK: - Private implementations
     
-    // example: https://farm1.staticflickr.com/2/1418878_1e92283336_m.jpg
+    // Url example: https://farm1.staticflickr.com/2/1418878_1e92283336_m.jpg
     
     private func photoURL(_ size: String = PhotoSize.small) -> URL? {
         guard let farmID = farmID,

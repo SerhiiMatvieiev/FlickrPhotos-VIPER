@@ -11,15 +11,11 @@ import UIKit
 protocol PhotoSearchDataDisplayManagerDelegate: class {
 
     /**
-     @author Serhii Marvieiev
-     
      Notify when cell pressed
      */
     func didTapCell(withPhoto photo: Photo)
     
-    /**
-     @author Serhii Marvieiev
-     
+    /**     
      Search photos in page
      
      @param tag is photo name

@@ -9,10 +9,7 @@
 import UIKit
 
 protocol NibLoadableView: class {
-    /**
-     @author Serhii Matvieiev
-     Return cell nib
-     */
+
     static var nibName: String { get }
 }
 
