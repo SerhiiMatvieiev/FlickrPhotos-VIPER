@@ -20,7 +20,7 @@ Navigate to your project folder, and run command:
 pod install
 ```
 
-If you're not familiar with CocoaPods, read this guides: https://guides.cocoapods.org/using/getting-started.html
+If you're not familiar with CocoaPods, read this guides: [CocoaPods Get Started](https://guides.cocoapods.org/using/getting-started.html) 
 
 ## License
 
