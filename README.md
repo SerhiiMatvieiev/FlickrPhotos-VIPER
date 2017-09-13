@@ -12,6 +12,16 @@ Created to show how we can use VIPER architecture in simple Swift 3 project.
 
 This project search photos through Flickr API.
 
+## Installation
+
+Navigate to your project folder, and run command:
+
+```ruby
+pod install
+```
+
+If you're not familiar with CocoaPods, at first read this guides: https://guides.cocoapods.org/using/getting-started.html
+
 ## License
 
 © Serhii Matvieiev ( Twitter: https://twitter.com/_SergeyMatveev_/ )
