@@ -14,4 +14,4 @@ This project search photos through Flickr API.
 
 ## License
 
-© Serhii Matvieiev ( Twitter: https://twitter.com/_SergeyMatveev_ )
+© Serhii Matvieiev ( Twitter: https://twitter.com/_SergeyMatveev_/ )
