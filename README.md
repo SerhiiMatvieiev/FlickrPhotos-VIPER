@@ -11,3 +11,7 @@ Created to show how we can use VIPER architecture in simple Swift 3 project.
 ## Project description
 
 This project search photos through Flickr API.
+
+## License
+
+© Serhii Matvieiev
