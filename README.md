@@ -24,4 +24,4 @@ If you're not familiar with CocoaPods, read this guides: [CocoaPods Getting Star
 
 ## License
 
-© Serhii Matvieiev ( Twitter: https://twitter.com/_SergeyMatveev_/ )
+© Serhii Matvieiev [Twitter](https://twitter.com/_SergeyMatveev_/ )
