@@ -14,13 +14,14 @@ This project search photos through Flickr API.
 
 ## Run Example
 
-If you want run example, before to open Xcode the first time, open Terminal in Example folder and run the command:
+If you want run example, before to open Xcode the first time, open Terminal in FlickrPhotos folder and run the command:
 
 ```ruby
 pod install
 ```
 
 After than open the .xworkspace file generated.
+
 If you're not familiar with CocoaPods, read this guides: [CocoaPods Getting Started](https://guides.cocoapods.org/using/getting-started.html) 
 
 ## License
