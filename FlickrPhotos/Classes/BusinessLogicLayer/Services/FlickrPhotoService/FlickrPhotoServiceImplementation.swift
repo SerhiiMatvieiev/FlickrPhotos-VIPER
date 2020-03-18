@@ -2,43 +2,44 @@
 //  FlickrPhotoServiceImplementation.swift
 //  FlickrPhotos
 //
-//  Created by Sergey Matveev on 7/2/17.
-//  Copyright © 2017 GNS-IT. All rights reserved.
+//  Created by Serhii Matvieiev on 7/2/17.
+//  Copyright © 2017 Serhii Matvieiev. All rights reserved.
 //
 
 import Foundation
 import Alamofire
-import AlamofireObjectMapper
 
-class FlickrPhotoServiceImplementation: FlickrPhotoService {
+class FlickrPhotoServiceImpl {
     
-    func searchPhotos(withTag tag: String, page: Int, completion: @escaping FlickrPhotosCompletion) {
-        
-        let params: [String: Any] = ["method"        : "flickr.photos.search",
-                                     "api_key"       : FlickrAPI.key,
-                                     "tags"          : tag,
-                                     "page"          : page,
-                                     "format"        : "json",
-                                     "nojsoncallback": 1]
-        
-        let urlString = FlickrAPI.baseURL + FlickrAPI.Endpoint.searchPhoto
-        
-        Alamofire.request(urlString, method: .get, parameters: params).responseObject(keyPath: FlickrAPI.keyPath) { (response: DataResponse<FlickrPhoto>) in
-            
-            if let error = response.result.error {
-                print("Error search photos: \(error.localizedDescription)")
-                completion([], 0, error)
-                return
-            }
-            
-            if let flickrPhoto = response.result.value {
-                completion(flickrPhoto.photos!, Int(flickrPhoto.total!)!, nil)
-                return
-            }
-            
-            completion([], 0, nil)
-            
-        }
-        
+    // MARK: Private
+    private func parameters(withTag tag: String, page: Int) -> [String: Any] {
+        return ["method"        : "flickr.photos.search",
+                "api_key"       : FlickrAPIConstants.key,
+                "tags"          : tag,
+                "page"          : page,
+                "format"        : "json",
+                "nojsoncallback": 1]
     }
 }
+
+// MARK: - FlickrPhotoService
+extension FlickrPhotoServiceImpl: FlickrPhotoService {
+    func searchPhotos(withTag tag: String, page: Int, completion: @escaping FlickrPhotosCompletion) {
+        let urlString = FlickrAPIConstants.baseURL + FlickrAPIConstants.Endpoint.searchPhoto
+        
+        AF.request(urlString, method: .get, parameters: parameters(withTag: tag, page: page)).responseData { (response) in
+            switch response.result {
+            case .success(let data):
+                do {
+                    let flickrPhoto = try JSONDecoder().decode(FlickrPhoto.self, from: data)
+                    completion(.success(flickrPhoto))
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }        
+    }
+}
+

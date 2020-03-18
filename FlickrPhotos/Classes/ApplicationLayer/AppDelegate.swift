@@ -2,19 +2,20 @@
 //  AppDelegate.swift
 //  FlickrPhotos
 //
-//  Created by Sergey Matveev on 30.06.17.
-//  Copyright © 2017 GNS-IT. All rights reserved.
+//  Created by Serhii Matvieiev on 30.06.17.
+//  Copyright © 2017 Serhii Matvieiev. All rights reserved.
 //
 
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: CleanApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    override var services: [ApplicationService] {
-        return [
-            // TODO: Plug-in servises here
-        ]
+    var window: UIWindow?
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let photoSearchModule = PhotoSearchModuleAssembler.makeModule()
+        window = PresentationAssembler.makeWindow(withModule: photoSearchModule.navigated())
+        return true
     }
 }
-

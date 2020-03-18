@@ -1,13 +1,13 @@
 ### Headers settings
-company: GNS-IT
+company: Serhii Matvieiev
 
 ### Xcode project settings
-project_name: FlickrPhotos
-xcodeproj_path: FlickrPhotos.xcodeproj
+project_name: FlickrPhotos-VIPER
+xcodeproj_path: FlickrPhotos-VIPER.xcodeproj
 
 ### Code generation settings section
 # The main project target name
-project_target: FlickrPhotos
+project_target: FlickrPhotos-VIPER
 
 # The file path for new modules
 project_file_path: FlickrPhotos/Classes/PresentationLayer/UserStories
@@ -17,19 +17,19 @@ project_group_path: FlickrPhotos/Classes/PresentationLayer/UserStories
 
 ### Tests generation settings section
 # The tests target name
-test_target: FlickrPhotosTests
+test_target: FlickrPhotos-VIPERTests
 
 # The file path for new tests
-test_file_path: FlickrPhotos/FlickrPhotosTests
+test_file_path: FlickrPhotos-VIPERTests
 
 # The Xcode group path to new tests
-test_group_path: FlickrPhotos/FlickrPhotosTests
+test_group_path: FlickrPhotos-VIPERTests
 
 ### Dependencies settings section
 podfile_path: Podfile
 
 ### Templates
+catalogs:
+- 'https://github.com/SerhiiMatvieiev/generamba-catalog'
 templates:
-- {name: rviper_controller}
-- {name: mvvm_controller}
-- {name: swifty_viper}
+- {name: swift_viper_b}
