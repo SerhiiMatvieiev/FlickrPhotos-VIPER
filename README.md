@@ -1,8 +1,8 @@
 
 ![Version](https://img.shields.io/badge/Swift-3.0%2B-orange.svg?style=flat)
 
-# ViperExampleSwift
-Simple example Swift 3 VIPER architecture 
+# FlickrPhotos-VIPER
+Simple example Swift 5 VIPER architecture 
 
 ## Introduction
 
