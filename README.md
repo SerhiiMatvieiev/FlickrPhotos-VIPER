@@ -6,7 +6,7 @@ Simple example Swift 5 VIPER architecture
 
 ## Introduction
 
-Created to show how we can use VIPER architecture in simple Swift 3 project.
+Created to show how we can use VIPER architecture in simple Swift 5 project.
 
 ## Project description
 
