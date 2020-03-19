@@ -1,6 +1,0 @@
-framework module Pods_FlickrPhotos_VIPERTests {
-  umbrella header "Pods-FlickrPhotos-VIPERTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
