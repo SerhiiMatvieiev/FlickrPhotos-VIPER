@@ -15,10 +15,10 @@ class PhotoSearchViewController: UIViewController {
     var dataDisplayManager: PhotoSearchDataDisplayManager!
 
     // MARK: Subviews
-    private lazy var searchBar: UISearchBar = {
-        let sb = UISearchBar()
-        sb.delegate = self
-        return sb
+    private lazy var searchController: UISearchController = {
+        let sc = UISearchController(searchResultsController: nil)
+        sc.searchBar.delegate = self
+        return sc
     }()
     
     private lazy var collectionView: UICollectionView = {
@@ -40,16 +40,10 @@ class PhotoSearchViewController: UIViewController {
     
     // MARK: Private
     private func setupUI() {
-        view.addSubview(searchBar)
-        searchBar.snp.makeConstraints {
-            $0.left.equalToSuperview()
-            $0.top.equalTo(view.snp.topMargin)
-            $0.right.equalToSuperview()
-        }
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints {
             $0.left.equalToSuperview()
-            $0.top.equalTo(searchBar.snp.bottom)
+            $0.top.equalToSuperview()
             $0.right.equalToSuperview()
             $0.bottom.equalTo(view.snp.bottomMargin)
         }
@@ -61,6 +55,9 @@ extension PhotoSearchViewController: PhotoSearchViewInput {
     func setupInitialState() {
         view.backgroundColor = .white
         title = "Flickr Photos"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.hidesSearchBarWhenScrolling = false
+        navigationItem.searchController = searchController
         setupUI()
     }
     func updateView(withPhotos photos: [PhotoVM], hasMore: Bool) {
@@ -87,11 +84,11 @@ extension PhotoSearchViewController: PhotoSearchViewInput {
 }
 
 // MARK: - UISearchBarDelegate
-
 extension PhotoSearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else { return }
         searchBar.resignFirstResponder()
+        dismiss(animated: true, completion: nil)
         dataDisplayManager.clearView()
         output.search(tag: searchText)
     }

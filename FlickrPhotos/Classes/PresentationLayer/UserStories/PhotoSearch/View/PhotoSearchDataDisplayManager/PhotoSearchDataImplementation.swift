@@ -42,6 +42,7 @@ extension PhotoSearchDataImplementation: PhotoSearchDataDisplayManager {
         collectionView.reloadData()
     }
     func clearView() {
+        hasMore = false
         photos.removeAll()
         collectionView.reloadData()
     }
